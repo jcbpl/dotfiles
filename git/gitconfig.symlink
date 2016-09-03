@@ -1,0 +1,42 @@
+[user]
+  name = Jacob Paul
+  email = jacob@jacobpaul.io
+
+[credential]
+  helper = osxkeychain
+
+[hub]
+  protocol = https
+
+[alias]
+  br = branch
+  ci = commit
+  co = checkout
+  df = diff
+  st = status
+  l = log --pretty=color
+  lg = log --pretty=color --graph
+
+[pretty]
+  color = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
+
+[core]
+  excludesfile = ~/.gitignore
+
+[push]
+  default = simple
+
+[branch]
+  autosetuprebase = always
+
+[merge]
+  log = true
+
+[mergetool]
+  keepBackup = false
+
+[difftool]
+  prompt = false
+
+[help]
+  autocorrect = 1
