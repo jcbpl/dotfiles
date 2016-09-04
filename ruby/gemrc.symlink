@@ -1,0 +1,5 @@
+---
+:update_sources: true
+:verbose: true
+:backtrace: false
+gem: --no-document
