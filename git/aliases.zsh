@@ -8,7 +8,7 @@ fi
 
 alias gl='git log --pretty=color'
 alias glg='git log --pretty=color --graph'
-alias gp='git push origin HEAD'
+alias gp='git push'
 alias gd='git diff'
 alias gc='git commit'
 alias gca='git commit -a'
