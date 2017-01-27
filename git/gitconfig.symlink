@@ -1,39 +1,41 @@
-[user]
-  name = Jacob Paul
-  email = jacob@jacobpaul.io
+[include]
+	path = ~/.gitconfig.local
+
+[hub]
+	protocol = https
 
 [credential]
-  helper = osxkeychain
+	helper = osxkeychain
 
 [alias]
-  br = branch
-  ci = commit
-  co = checkout
-  df = diff
-  st = status
-  l = log --pretty=color
-  lg = log --pretty=color --graph
+	br = branch
+	ci = commit
+	co = checkout
+	df = diff
+	st = status
+	l = log --pretty=color
+	lg = log --pretty=color --graph
 
 [pretty]
-  color = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
+	color = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
 
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore
 
 [push]
-  default = simple
+	default = simple
 
 [branch]
-  autosetuprebase = always
+	autosetuprebase = always
 
 [merge]
-  log = true
+	log = true
 
 [mergetool]
-  keepBackup = false
+	keepBackup = false
 
 [difftool]
-  prompt = false
+	prompt = false
 
 [help]
-  autocorrect = 1
+	autocorrect = 1
