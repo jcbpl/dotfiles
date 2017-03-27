@@ -21,6 +21,7 @@
 
 [core]
 	excludesfile = ~/.gitignore
+	editor = atom --wait --new-window
 
 [push]
 	default = simple
