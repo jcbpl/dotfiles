@@ -1,0 +1,23 @@
+{
+	"close_windows_when_empty": true,
+	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"font_face": "Droid Sans Mono",
+	"font_options":
+	[
+		"no_round"
+	],
+	"font_size": 16,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"rulers":
+	[
+		100
+	],
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": true
+}

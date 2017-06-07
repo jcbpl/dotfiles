@@ -1,0 +1,16 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"AutoWrap",
+		"FileDiffs",
+		"Git",
+		"Package Control",
+		"Siteleaf Liquid Syntax",
+		"Wrap Plus"
+	]
+}
