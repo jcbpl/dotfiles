@@ -7,10 +7,23 @@
 	[
 		"Alignment",
 		"AutoWrap",
+		"Babel",
+		"CJSX Syntax",
+		"CoffeeScript-Sublime-Plugin",
+		"Elm Language Support",
 		"FileDiffs",
 		"Git",
+		"Liquid",
+		"Markdown Preview",
 		"Package Control",
+		"RSpec",
+		"Sass",
 		"Siteleaf Liquid Syntax",
+		"Syntax Highlighting for PostCSS",
+		"Vue Syntax Highlight",
 		"Wrap Plus"
+	],
+	"repositories":
+	[
 	]
 }
