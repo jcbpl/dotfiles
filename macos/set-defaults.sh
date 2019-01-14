@@ -157,6 +157,9 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
+# Don’t show recent applications in the Dock
+defaults write com.apple.dock show-recents -bool false
+
 # Hot corners
 # Possible values:
 #  0: no-op
