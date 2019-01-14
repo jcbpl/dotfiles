@@ -1,6 +1,9 @@
 [include]
 	path = ~/.gitconfig.local
 
+[init]
+	templatedir = ~/.git_template
+
 [hub]
 	protocol = https
 
@@ -15,6 +18,7 @@
 	st = status
 	l = log --pretty=color
 	lg = log --pretty=color --graph
+	ctags = !.git/hooks/ctags
 
 [pretty]
 	color = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
@@ -22,6 +26,7 @@
 [core]
 	excludesfile = ~/.gitignore
 	editor = subl -n -w
+	autocrlf = input
 
 [push]
 	default = simple
