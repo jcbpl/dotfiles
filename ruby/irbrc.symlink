@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 require 'irb/completion'
 require 'irb/ext/save-history'
+require 'open3'
 require 'rubygems'
 
 IRB.conf[:SAVE_HISTORY] = 1000
@@ -41,4 +42,21 @@ end
 
 def r
   reload!
+end
+
+# Relies on python-sqlparse https://github.com/andialbrecht/sqlparse
+def sqlformat(input, copy: false)
+  sql = input.respond_to?(:to_sql) ? input.to_sql : input.to_s
+
+  IO.popen("sqlformat --reindent -", "w+") do |io|
+    io.write(sql)
+    io.close_write
+    result = io.read
+    IO.popen("pbcopy", "w") { |io| io << result } if copy
+    puts result
+  end
+end
+
+def sqlcopy(input)
+  sqlformat(input, copy: true)
 end
