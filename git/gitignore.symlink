@@ -1,5 +1,8 @@
 .DS_Store
 *~
+*.dump
+*.sublime-project
+*.sublime-workspace
 *.swp
 .bundle
 .envrc
