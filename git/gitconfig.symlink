@@ -1,47 +1,54 @@
 [include]
-	path = ~/.gitconfig.local
+  path = ~/.gitconfig.local
 
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
 
 [hub]
-	protocol = https
+  protocol = https
 
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 
 [alias]
-	br = branch
-	ci = commit
-	co = checkout
-	df = diff
-	st = status
-	l = log --pretty=color
-	lg = log --pretty=color --graph
-	ctags = !.git/hooks/ctags
+  br = branch
+  ci = commit
+  co = checkout
+  df = diff
+  st = status
+  l = log --pretty=color
+  lg = log --pretty=color --graph
+  ctags = !.git/hooks/ctags
 
 [pretty]
-	color = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
+  color = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
 
 [core]
-	excludesfile = ~/.gitignore
-	editor = subl -n -w
-	autocrlf = input
-
-[push]
-	default = simple
-
-[branch]
-	autosetuprebase = always
-
-[merge]
-	log = true
-
-[mergetool]
-	keepBackup = false
+  excludesfile = ~/.gitignore
+  editor = subl -n -w
+  autocrlf = input
 
 [difftool]
-	prompt = false
+  prompt = false
 
 [help]
-	autocorrect = 1
+  autocorrect = 1
+
+[push]
+  default = simple
+
+[branch]
+  autosetuprebase = always
+
+[merge]
+  log = true
+
+[mergetool]
+  keepBackup = false
+
+[pull]
+  rebase = true
+
+[rebase]
+  autosquash = true
+
