@@ -1,0 +1,7 @@
+// These settings override both User and Default settings for the Git Commit syntax
+{
+  "auto_wrap" : true,
+  "rulers": [
+    70
+  ]
+}

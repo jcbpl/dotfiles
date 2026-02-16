@@ -7,10 +7,11 @@
 	[
 		"Alignment",
 		"AutoWrap",
-		"Better CoffeeScript",
+		"CoffeeScript",
 		"Dockerfile Syntax Highlighting",
 		"FileDiffs",
-		"Git",
+		"Git blame",
+		"Javascript Beautify",
 		"LiveReload",
 		"MarkdownPreview",
 		"Package Control",
@@ -20,9 +21,10 @@
 		"Solarized Color Scheme",
 		"SqlBeautifier",
 		"TOML",
-		"Wrap Plus"
+		"Vue",
+		"Wrap Plus",
 	],
 	"repositories":
 	[
-	]
+	],
 }

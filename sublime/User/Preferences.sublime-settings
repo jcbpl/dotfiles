@@ -1,19 +1,20 @@
 {
 	"close_windows_when_empty": true,
-	"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).sublime-color-scheme",
+	"color_scheme": "Solarized (dark).sublime-color-scheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Noto Mono",
 	"font_options":
 	[
 		"no_round"
 	],
-	"font_size": 17,
+	"font_size": 18,
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
 	],
 	"mini_diff": "auto",
+	"remember_full_screen": true,
 	"rulers":
 	[
 		100
@@ -21,5 +22,9 @@
 	"tab_size": 2,
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
-	"word_wrap": true
+	"word_wrap": true,
+	"index_files": true,
+	"theme": "Default.sublime-theme",
+	"dark_theme": "Adaptive.sublime-theme",
+	"light_theme": "Adaptive.sublime-theme",
 }

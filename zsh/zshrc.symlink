@@ -1,3 +1,5 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 export ZSH=$HOME/.dotfiles
 export PROJECTS=~/Projects
 
@@ -35,4 +37,4 @@ done
 
 unset config_files
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source `brew --prefix`/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
