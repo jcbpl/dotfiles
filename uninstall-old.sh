@@ -35,6 +35,7 @@ remove_symlink() {
   elif [ -e "$target" ]; then
     skip "$target exists but is not a symlink, leaving it alone"
   fi
+  return 0
 }
 
 echo ""
