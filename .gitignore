@@ -1,6 +1,1 @@
-git/gitconfig.local.symlink
-
-sublime/User/MarkdownPreview.sublime-settings
-sublime/User/Package Control.*
-sublime/User/oscrypto-ca-bundle.crt
-!sublime/User/Package Control.sublime-settings
+.DS_Store

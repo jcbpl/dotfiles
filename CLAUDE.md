@@ -1,0 +1,1 @@
+When writing PR descriptions and commit messages, keep them conversational and brief -- a couple of plain sentences explaining what the change does and why, not structured sections, bullet lists, or test plan checklists. Use a short subject line followed by a blank line and body text.

@@ -1,0 +1,29 @@
+[core]
+  autocrlf = input
+
+[alias]
+  amend = commit --amend --no-edit
+  wip = !git add -A && git commit -m 'wip'
+  cleanup = !git branch --merged | grep -v '^*' | grep -v 'main' | xargs -r git branch -d
+
+[push]
+  autoSetupRemote = true
+
+[pull]
+  rebase = true
+
+[rebase]
+  autosquash = true
+
+[merge]
+  log = true
+
+[init]
+  defaultBranch = main
+
+[help]
+  autocorrect = prompt
+
+[diff]
+  algorithm = histogram
+  colorMoved = default
