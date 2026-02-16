@@ -60,20 +60,14 @@ for link in "${old_symlinks[@]}"; do
   remove_symlink "$link"
 done
 
-# Sublime Text symlink (sublime/install.sh linked the User dir).
-# Replace the symlink with a real copy so Sublime keeps its preferences
-# after the repo no longer has the sublime/User directory.
+# Sublime Text: copy preferences from the repo to replace the symlink
+# so they survive switching to main (which removes sublime/User).
+subl_repo="$DOTFILES_ROOT/sublime/User"
 subl_user="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
-if [ -L "$subl_user" ]; then
-  points_to="$(readlink "$subl_user")"
-  if [[ "$points_to" == "$DOTFILES_ROOT"* ]]; then
-    # Copy the actual files, then swap the symlink for the real dir
-    tmp_dir="$(mktemp -d)"
-    cp -R "$subl_user"/ "$tmp_dir"/
-    rm "$subl_user"
-    mv "$tmp_dir" "$subl_user"
-    ok "materialized Sublime Text User symlink into a real directory"
-  fi
+if [ -d "$subl_repo" ] && [ -L "$subl_user" ]; then
+  rm "$subl_user"
+  cp -R "$subl_repo" "$subl_user"
+  ok "copied Sublime preferences to $subl_user"
 fi
 
 echo ""
