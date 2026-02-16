@@ -63,12 +63,15 @@ done
 # Sublime Text: copy preferences from the repo to replace the symlink
 # so they survive switching to main (which removes sublime/User).
 subl_repo="$DOTFILES_ROOT/sublime/User"
-subl_user="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
-if [ -d "$subl_repo" ] && [ -L "$subl_user" ]; then
-  rm "$subl_user"
-  cp -R "$subl_repo" "$subl_user"
-  ok "copied Sublime preferences to $subl_user"
-fi
+for subl_user in \
+  "$HOME/Library/Application Support/Sublime Text/Packages/User" \
+  "$HOME/Library/Application Support/Sublime Text 3/Packages/User"; do
+  if [ -d "$subl_repo" ] && [ -L "$subl_user" ]; then
+    rm "$subl_user"
+    cp -R "$subl_repo" "$subl_user"
+    ok "copied Sublime preferences to $subl_user"
+  fi
+done
 
 echo ""
 info "Checking for ~/.localrc"
