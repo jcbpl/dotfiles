@@ -32,7 +32,7 @@ export VISUAL="$EDITOR"
 
 # -- Prompt ------------------------------------------------------------
 # Two-line prompt: path + git branch, arrow colored by last exit code
-_git_branch() {
+__prompt_git_branch() {
   local branch
   branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
   [[ -n $branch ]] && echo " ($branch)"
@@ -49,7 +49,7 @@ _set_prompt() {
   local arrow_color="$green"
   (( last_exit != 0 )) && arrow_color="$red"
 
-  PS1="\n${blue}\w${cyan}\$(_git_branch)${reset}\n${arrow_color}❯${reset} "
+  PS1="\n${blue}\w${cyan}\$(__prompt_git_branch)${reset}\n${arrow_color}❯${reset} "
 }
 
 if [[ "$PROMPT_COMMAND" != *_set_prompt* ]]; then
@@ -74,7 +74,6 @@ alias l='ls -lAh'
 alias ll='ls -l'
 
 # Git
-alias g='git'
 alias gs='git status -sb'
 alias gst='git status'
 alias gd='git diff'
@@ -107,11 +106,6 @@ if [[ "$(uname)" == "Darwin" ]] && command -v brew &>/dev/null; then
   BREW_PREFIX="$(brew --prefix)"
   [[ -r "$BREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && \
     source "$BREW_PREFIX/etc/profile.d/bash_completion.sh"
-fi
-
-# Git completion for the 'g' alias
-if type __git_complete &>/dev/null; then
-  __git_complete g __git_main
 fi
 
 # -- Tool integrations (only if present) -------------------------------
