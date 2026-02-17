@@ -49,8 +49,21 @@ _set_prompt() {
   local arrow_color="$green"
   (( last_exit != 0 )) && arrow_color="$red"
 
+  # Set tab title to current directory while at the prompt
+  printf '\033]0;%s\007' "${PWD##*/}"
+
   PS1="\n${blue}\w${cyan}\$(__prompt_git_branch)${reset}\n${arrow_color}❯${reset} "
 }
+
+# -- Tab title ---------------------------------------------------------
+# Show the running command in the tab title while it executes
+_set_running_title() {
+  case "$BASH_COMMAND" in
+    _set_prompt*|__prompt_git_branch*) return ;;
+  esac
+  printf '\033]0;%s\007' "${BASH_COMMAND}"
+}
+trap '_set_running_title' DEBUG
 
 if [[ "$PROMPT_COMMAND" != *_set_prompt* ]]; then
   PROMPT_COMMAND="_set_prompt${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
