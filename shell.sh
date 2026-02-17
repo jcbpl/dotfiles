@@ -17,9 +17,16 @@ if [[ "$(uname)" != "Darwin" ]]; then
   exit 1
 fi
 
+# Ensure Homebrew is in PATH (it may not be yet if dotfiles aren't wired up)
 if ! command -v brew &>/dev/null; then
-  error "Homebrew is required. Install it from https://brew.sh"
-  exit 1
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  else
+    error "Homebrew is required. Install it from https://brew.sh"
+    exit 1
+  fi
 fi
 
 BREW_BASH="$(brew --prefix)/bin/bash"
@@ -47,4 +54,12 @@ else
   info "changing login shell to $BREW_BASH..."
   chsh -s "$BREW_BASH"
   success "login shell set -- restart your terminal"
+fi
+
+# Create ~/.bash_profile so login shells source ~/.bashrc
+if grep -qF ".bashrc" "$HOME/.bash_profile" 2>/dev/null; then
+  success "~/.bash_profile already sources ~/.bashrc"
+else
+  printf '# source ~/.bashrc for login shells\n[[ -f ~/.bashrc ]] && source ~/.bashrc\n' >> "$HOME/.bash_profile"
+  success "created ~/.bash_profile -> sources ~/.bashrc"
 fi
