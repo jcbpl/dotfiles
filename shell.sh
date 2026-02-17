@@ -56,10 +56,18 @@ else
   success "login shell set -- restart your terminal"
 fi
 
-# Create ~/.bash_profile so login shells source ~/.bashrc
+# Set up ~/.bash_profile for login shells (Homebrew PATH + source ~/.bashrc)
+BREW_PREFIX="$(brew --prefix)"
+if grep -qF "brew shellenv" "$HOME/.bash_profile" 2>/dev/null; then
+  success "~/.bash_profile already has brew shellenv"
+else
+  printf 'eval "$(%s/bin/brew shellenv)"\n' "$BREW_PREFIX" >> "$HOME/.bash_profile"
+  success "added brew shellenv to ~/.bash_profile"
+fi
+
 if grep -qF ".bashrc" "$HOME/.bash_profile" 2>/dev/null; then
   success "~/.bash_profile already sources ~/.bashrc"
 else
-  printf '# source ~/.bashrc for login shells\n[[ -f ~/.bashrc ]] && source ~/.bashrc\n' >> "$HOME/.bash_profile"
-  success "created ~/.bash_profile -> sources ~/.bashrc"
+  printf '[[ -f ~/.bashrc ]] && source ~/.bashrc\n' >> "$HOME/.bash_profile"
+  success "added source ~/.bashrc to ~/.bash_profile"
 fi
