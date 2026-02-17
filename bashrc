@@ -121,6 +121,9 @@ if [[ "$(uname)" == "Darwin" ]] && command -v brew &>/dev/null; then
     source "$BREW_PREFIX/etc/profile.d/bash_completion.sh"
 fi
 
+# Git alias completions (requires bash_completion above)
+__git_complete gco _git_checkout
+
 # -- Tool integrations (only if present) -------------------------------
 command -v mise &>/dev/null && eval "$(mise activate bash)"
 
