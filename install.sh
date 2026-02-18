@@ -48,14 +48,18 @@ else
 fi
 
 # --- Claude config ---
+CLAUDE_MD="$HOME/.claude/CLAUDE.md"
+CLAUDE_START="# <<~DOTFILES $DOTFILES_DIR/CLAUDE.md"
+CLAUDE_END="# DOTFILES"
 mkdir -p "$HOME/.claude"
-if grep -qF "dotfiles" "$HOME/.claude/CLAUDE.md" 2>/dev/null; then
-  success "~/.claude/CLAUDE.md already includes dotfiles"
-else
-  printf '\n# dotfiles\n' >> "$HOME/.claude/CLAUDE.md"
-  cat "$DOTFILES_DIR/CLAUDE.md" >> "$HOME/.claude/CLAUDE.md"
-  success "appended to ~/.claude/CLAUDE.md"
+if grep -qF "$CLAUDE_START" "$CLAUDE_MD" 2>/dev/null; then
+  # Replace existing section between start and end markers
+  sed -i '' "\|$CLAUDE_START|,\|$CLAUDE_END|d" "$CLAUDE_MD"
 fi
+printf '\n%s\n' "$CLAUDE_START" >> "$CLAUDE_MD"
+cat "$DOTFILES_DIR/CLAUDE.md" >> "$CLAUDE_MD"
+printf '%s\n' "$CLAUDE_END" >> "$CLAUDE_MD"
+success "updated ~/.claude/CLAUDE.md from $DOTFILES_DIR/CLAUDE.md"
 
 if [[ -z "${DOTFILES_QUIET:-}" ]]; then
   echo ""
