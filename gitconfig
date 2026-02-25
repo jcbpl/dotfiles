@@ -4,7 +4,7 @@
 [alias]
   amend = commit --amend --no-edit
   wip = !git add -A && git commit -m 'wip'
-  cleanup = !git branch --merged | grep -v '^*' | grep -v 'main' | xargs -r git branch -d
+  cleanup = !git branch --merged | grep -v '^*' | grep -Ev '^\\s*main$' | xargs git branch -d
   copy-log = "!f() { git log --format='* %h **%s**%n%w(0,2,2)%+b' --reverse \"${1:-main}\".. | pbcopy; }; f"
 
 [push]
