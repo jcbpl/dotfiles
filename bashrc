@@ -122,7 +122,11 @@ if [[ "$(uname)" == "Darwin" ]] && command -v brew &>/dev/null; then
 fi
 
 # Git alias completions (requires bash_completion above)
-__git_complete gco _git_checkout
+_complete_local_branches() {
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  COMPREPLY=($(compgen -W "$(git branch --format='%(refname:short)' 2>/dev/null)" -- "$cur"))
+}
+complete -F _complete_local_branches gb gco gd gds gl gla gp
 
 # -- Tool integrations (only if present) -------------------------------
 command -v mise &>/dev/null && eval "$(mise activate bash)"
