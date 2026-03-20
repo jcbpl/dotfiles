@@ -13,3 +13,5 @@ If the branch has a single commit, use its message directly as the PR title and 
 If there are multiple commits, ask whether to run `git copy-log` (which formats the commits as a bulleted list and copies to clipboard) and use that as the body, or write a new summary.
 
 When writing a new summary, follow the same style as the `/commit` skill—first person, conversational, focused on why not what. Don't append a "Generated with Claude Code" line.
+
+Don't hard-wrap lines in the PR description—GitHub renders it as prose, so let lines flow naturally. Hard wrapping is only for commit message bodies.

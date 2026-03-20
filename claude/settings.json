@@ -1,13 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Read",
+      "Edit",
       "Glob",
       "Grep",
+      "Read",
       "WebFetch",
       "WebSearch",
-      "Edit",
       "Write",
+      "Bash(echo *)",
+      "Bash(find *)",
       "Bash(gh issue list*)",
       "Bash(gh issue view*)",
       "Bash(gh pr checks*)",
@@ -17,7 +19,8 @@
       "Bash(gh repo view*)",
       "Bash(gh run view*)",
       "Bash(git *)",
-      "Bash(ls*)",
+      "Bash(grep *)",
+      "Bash(ls *)",
       "Bash(pwd)"
     ],
     "ask": [
