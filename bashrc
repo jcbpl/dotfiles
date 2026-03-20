@@ -96,8 +96,9 @@ alias gca='git commit -a'
 alias gco='git checkout'
 alias gb='git branch'
 alias gp='git push'
-alias gl='git log --oneline --graph --decorate -20'
-alias gla='git log --oneline --graph --decorate --all -30'
+alias gl='git log'
+alias gll='git log --oneline --graph --decorate'
+alias gls='git log --oneline -10'
 alias gac='git add -A && git commit -m'
 
 # Misc
