@@ -38,6 +38,13 @@ __prompt_git_branch() {
   [[ -n $branch ]] && echo " ($branch)"
 }
 
+# Tell Windows Terminal the current WSL directory for duplicate-tab support.
+__set_windows_terminal_cwd() {
+  [[ -n "$WSL_DISTRO_NAME" && -n "$WT_SESSION" ]] || return
+  printf '\e]9;9;%s\e\\' "$(wslpath -w "$PWD")"
+}
+
+# Build the prompt and update terminal metadata while preserving exit status.
 _set_prompt() {
   local last_exit=$?
   local reset='\[\033[0m\]'
@@ -51,6 +58,7 @@ _set_prompt() {
 
   # Set tab title to current directory while at the prompt
   printf '\033]0;%s\007' "${PWD##*/}"
+  __set_windows_terminal_cwd
 
   PS1="\n${blue}\w${cyan}\$(__prompt_git_branch)${reset}\n${arrow_color}❯${reset} "
 }

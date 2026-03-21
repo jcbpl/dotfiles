@@ -54,6 +54,9 @@ On WSL, the bashrc automatically:
 - Sets `EDITOR` to `code --wait`
 - Sets `BROWSER` to `wslview` for opening URLs in Windows
 - Adds `pbcopy`/`pbpaste` aliases via `clip.exe`/`powershell.exe`
+- Reports the current directory to Windows Terminal so duplicated tabs/panes can reopen in the same path
+
+If Windows Terminal still shows a fixed tab title like `Ubuntu-24.04`, check that the profile is not forcing a static `tabTitle` and that `suppressApplicationTitle` is `false`.
 
 To keep your PATH clean, add to `/etc/wsl.conf`:
 
