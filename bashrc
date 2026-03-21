@@ -15,6 +15,10 @@ HISTCONTROL=ignoreboth:erasedups
 HISTIGNORE="ls:cd:cd -:pwd:exit:clear"
 shopt -s histappend
 
+__append_history() {
+  history -a
+}
+
 # -- Shell options -----------------------------------------------------
 shopt -s globstar 2>/dev/null  # ** matches recursively
 shopt -s cdspell        # Autocorrect minor cd typos
@@ -46,7 +50,7 @@ __set_windows_terminal_cwd() {
 
 # Build the prompt and update terminal metadata while preserving exit status.
 _set_prompt() {
-  local last_exit=$?
+  local last_exit="${1:-$?}"
   local reset='\[\033[0m\]'
   local blue='\[\033[0;34m\]'
   local cyan='\[\033[0;36m\]'
@@ -63,19 +67,26 @@ _set_prompt() {
   PS1="\n${blue}\w${cyan}\$(__prompt_git_branch)${reset}\n${arrow_color}❯${reset} "
 }
 
+# Run prompt hooks, append history, and preserve the real exit status.
+__before_prompt() {
+  local last_exit=$?
+  __IN_PROMPT_COMMAND=1
+  [[ -n "${__DOTFILES_ORIG_PROMPT_COMMAND:-}" ]] && eval "$__DOTFILES_ORIG_PROMPT_COMMAND"
+  unset __IN_PROMPT_COMMAND
+  __append_history
+  _set_prompt "$last_exit"
+}
+
 # -- Tab title ---------------------------------------------------------
 # Show the running command in the tab title while it executes
 _set_running_title() {
+  [[ -n "${__IN_PROMPT_COMMAND:-}" ]] && return
   case "$BASH_COMMAND" in
     _set_prompt*|__prompt_git_branch*) return ;;
   esac
   printf '\033]0;%s\007' "${BASH_COMMAND}"
 }
 trap '_set_running_title' DEBUG
-
-if [[ "$PROMPT_COMMAND" != *_set_prompt* ]]; then
-  PROMPT_COMMAND="_set_prompt${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
-fi
 
 # -- WSL ---------------------------------------------------------------
 if [[ -n "$WSL_DISTRO_NAME" ]]; then
@@ -142,3 +153,10 @@ command -v mise &>/dev/null && eval "$(mise activate bash)"
 
 # -- Local overrides ---------------------------------------------------
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
+
+# -- Prompt hooks -------------------------------------------------------
+# Wrap any existing prompt hook with our own.
+if [[ "$PROMPT_COMMAND" != "__before_prompt" ]]; then
+  __DOTFILES_ORIG_PROMPT_COMMAND="$PROMPT_COMMAND"
+  PROMPT_COMMAND="__before_prompt"
+fi
