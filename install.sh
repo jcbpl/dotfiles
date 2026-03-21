@@ -47,8 +47,8 @@ else
   success "appended source line to ~/.bashrc"
 fi
 
-# --- Claude Code ---
-"$DOTFILES_DIR/claude/install.sh"
+# --- Agent config ---
+"$DOTFILES_DIR/agents/install.sh"
 
 if [[ -z "${DOTFILES_QUIET:-}" ]]; then
   echo ""
