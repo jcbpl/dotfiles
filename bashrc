@@ -80,7 +80,9 @@ fi
 # -- WSL ---------------------------------------------------------------
 if [[ -n "$WSL_DISTRO_NAME" ]]; then
   # Use Windows browser for URLs
-  export BROWSER="wslview"
+  if command -v explorer.exe >/dev/null 2>&1; then
+    export BROWSER="explorer.exe"
+  fi
   # Clipboard helpers
   alias pbcopy='clip.exe'
   alias pbpaste='powershell.exe -c Get-Clipboard'

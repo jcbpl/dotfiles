@@ -52,7 +52,7 @@ All files stay owned by the system -- tools like `gh` can write to
 
 On WSL, the bashrc automatically:
 - Sets `EDITOR` to `code --wait`
-- Sets `BROWSER` to `wslview` for opening URLs in Windows
+- Sets `BROWSER` to `explorer.exe` for opening URLs in Windows when available
 - Adds `pbcopy`/`pbpaste` aliases via `clip.exe`/`powershell.exe`
 - Reports the current directory to Windows Terminal so duplicated tabs/panes can reopen in the same path
 
