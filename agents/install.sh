@@ -22,6 +22,9 @@ success "copied CLAUDE.md"
 cp "$DOTFILES_DIR/agents/claude/settings.json" "$HOME/.claude/settings.json"
 success "copied Claude settings"
 
+cp "$DOTFILES_DIR/agents/claude/statusline.sh" "$HOME/.claude/statusline.sh"
+success "copied Claude status line"
+
 SKILLS_DST="$HOME/.claude/skills"
 mkdir -p "$SKILLS_DST"
 for skill_name in commit pr; do
