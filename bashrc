@@ -47,6 +47,7 @@ __set_windows_terminal_cwd() {
 # Build the prompt and update terminal metadata while preserving exit status.
 _set_prompt() {
   local last_exit=$?
+  stty sane 2>/dev/null
   local reset='\[\033[0m\]'
   local blue='\[\033[0;34m\]'
   local cyan='\[\033[0;36m\]'
