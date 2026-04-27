@@ -29,4 +29,6 @@ Wrap commit message bodies at 72 characters.
 
 If the branch has one commit, reuse the commit message for the PR title and body.
 
+Do not hard-wrap PR titles or body text. Unlike commit messages, PR descriptions are rendered as Markdown and should flow naturally.
+
 If the branch has multiple commits, ask whether to use `git copy-log` for the body or write a new summary. When writing a new summary, summarize the motivation and tradeoffs. Do not narrate the diff.
