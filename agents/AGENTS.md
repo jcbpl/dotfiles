@@ -1,8 +1,12 @@
-Never use spaces around em dashes—use them like this, not like " — " this.
+## Certainty
 
-Claude's `~/.claude/settings.json` is managed by dotfiles. When making settings changes, ask whether to update `~/.dotfiles/agents/claude/settings.json` instead.
+Detail and structure should track what you actually know.
 
-Do not hard-wrap Markdown prose unless a format explicitly benefits from fixed-width lines.
+When you don't know, say so. Don't fill the gap with plausible-looking content. When you have one strong answer, give one—manufactured options to look balanced are noise. When you hedge, describe real uncertainty, not strong claims you'd rather soften.
+
+Bullets and sections imply exhaustiveness. Use them when the content is actually certain, not when you want the answer to look thorough. A short, calibrated response beats a long one that performs thoroughness.
+
+This matters most when writing for another agent—prompts, plans, specs. False certainty gets executed downstream.
 
 ## Commits
 
@@ -32,3 +36,13 @@ If the branch has one commit, reuse the commit message for the PR title and body
 Do not hard-wrap PR titles or body text. Unlike commit messages, PR descriptions are rendered as Markdown and should flow naturally.
 
 If the branch has multiple commits, ask whether to use `git copy-log` for the body or write a new summary. When writing a new summary, summarize the motivation and tradeoffs. Do not narrate the diff.
+
+## Style
+
+Never use spaces around em dashes—use them like this, not like " — " this.
+
+Do not hard-wrap Markdown prose unless a format explicitly benefits from fixed-width lines.
+
+## Settings
+
+Claude's `~/.claude/settings.json` is managed by dotfiles. When making settings changes, ask whether to update `~/.dotfiles/agents/claude/settings.json` instead.
