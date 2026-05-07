@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Minimal Claude Code status line: project[worktree] • branch • model effort ctx% • cost • tokens.
+# Minimal Claude Code status line: project[worktree] • branch • model effort ctx%.
 # Reads session JSON from stdin (see https://code.claude.com/docs/en/statusline).
 
 input=$(cat)
@@ -59,8 +59,6 @@ else
   model_seg="${CYAN}${model}${RESET} ${DIM}${used_pct}%${RESET}"
 fi
 
-cost_seg="${DIM}$(printf '$%.2f' "$cost")${RESET}"
-
 fmt() {
   local n=$1
   if [ "$n" -ge 1000000 ] 2>/dev/null; then
@@ -72,17 +70,21 @@ fmt() {
   fi
 }
 
-total=$(( input_tokens + output_tokens ))
-if [ "$total" -gt 0 ]; then
-  tok_seg="${DIM}$(fmt $total) ⇡$(fmt $input_tokens) ⇣$(fmt $output_tokens)${RESET}"
-else
-  tok_seg=""
+cost_seg=""
+tok_seg=""
+if [ -n "$CLAUDE_SHOW_COST" ]; then
+  cost_seg="${DIM}$(printf '$%.2f' "$cost")${RESET}"
+  total=$(( input_tokens + output_tokens ))
+  if [ "$total" -gt 0 ]; then
+    tok_seg="${DIM}$(fmt $total) ⇡$(fmt $input_tokens) ⇣$(fmt $output_tokens)${RESET}"
+  fi
 fi
 
 SEP="${DIM} • ${RESET}"
 parts=()
 [ -n "$project_seg" ] && parts+=("$project_seg")
-parts+=("$git_seg" "$model_seg" "$cost_seg")
+parts+=("$git_seg" "$model_seg")
+[ -n "$cost_seg" ] && parts+=("$cost_seg")
 [ -n "$tok_seg" ] && parts+=("$tok_seg")
 
 out=""
