@@ -10,6 +10,8 @@ This matters most when writing for another agent—prompts, plans, specs. False 
 
 ## Commits
 
+Subject lines and bodies are prose. Follow the conventions in [Prose style](#prose-style) (e.g. no spaces around em dashes).
+
 Default to a subject-only commit. Subject lines should be short, imperative, and high-level.
 
 Add a body only when it preserves context the diff will not, such as:
@@ -31,13 +33,17 @@ Wrap commit message bodies at 72 characters.
 
 ## Pull Requests
 
+PR titles and bodies are prose. Follow the conventions in [Prose style](#prose-style) (e.g. no spaces around em dashes).
+
 If the branch has one commit, reuse the commit message for the PR title and body.
 
 Do not hard-wrap PR titles or body text. Unlike commit messages, PR descriptions are rendered as Markdown and should flow naturally.
 
 If the branch has multiple commits, ask whether to use `git copy-log` for the body or write a new summary. When writing a new summary, summarize the motivation and tradeoffs. Do not narrate the diff.
 
-## Style
+## Prose style
+
+These rules apply to any prose you produce: commit messages, PR descriptions, code review comments, chat responses, docs, and Markdown files.
 
 Never use spaces around em dashes—use them like this, not like " — " this.
 
